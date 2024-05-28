@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+#container {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 560px;
+  min-width: 560px;
+  gap: 2px;
+}
+
+.square {
+  padding: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
