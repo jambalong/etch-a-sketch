@@ -27,3 +27,11 @@ function createSquares() {
 }
 
 createSquares();
+
+let button = document.querySelector("#grid-size-btn")
+
+function createNewGrid() {
+  let gridSize = prompt("Enter the number of squares per side for the new grid:")
+}
+
+button.addEventListener("click", createNewGrid);

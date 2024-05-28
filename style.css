@@ -5,8 +5,14 @@
 
 body {
   display: flex;
-  justify-content: flex-start;
-  padding-top: 10px;
+  flex-direction: column;
+  padding: 10px;
+}
+
+#button-container {
+  margin: auto;
+  justify-content: center;
+  padding-bottom: 10px;
 }
 
 #container {
@@ -23,4 +29,8 @@ body {
 .square {
   padding: 16px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#grid-size-btn {
+  padding: 5px;
 }
