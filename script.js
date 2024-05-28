@@ -28,10 +28,22 @@ function createSquares() {
 
 createSquares();
 
-let button = document.querySelector("#grid-size-btn")
+function deleteGrid() {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+
+    if (!container.firstChild) {
+      break;
+    }
+  }
+}
 
 function createNewGrid() {
-  let gridSize = prompt("Enter the number of squares per side for the new grid:")
+  let gridSize = prompt("Enter the number of squares per side for the new grid (Max: 100)");
+
+  deleteGrid();
 }
+
+let button = document.querySelector("#grid-size-btn")
 
 button.addEventListener("click", createNewGrid);
