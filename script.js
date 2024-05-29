@@ -1,7 +1,23 @@
+// Function to generate a random RGB value
+function getRandomColor() {
+  let randomColor = [];
+
+  for (i = 0; i < 3; i++) {
+    let num = Math.floor(Math.random() * 256);
+
+    randomColor.push(num);
+  }
+
+  return randomColor.join(", ");
+}
+
 // Function to handle mouseover event
 function handleMouseOver(square) {
+  // Randomize color with each interaction
+  let randomColor = getRandomColor();
+
   // Change the background color when hovered
-  square.style.backgroundColor = "black";
+  square.style.backgroundColor = `rgb(${randomColor})`;
 }
 
 // Function to create squares and attach event listeners
@@ -45,7 +61,7 @@ function deleteGrid() {
 function promptUser() {
   let userInput;
 
-  // Loop till user inputs accepted amount (breaks when input is string)
+  // Loop till user inputs accepted amount (not able to handle string inputs)
   do {
     userInput = prompt("Enter the number of squares per side for the new grid (Max: 100)");
 
