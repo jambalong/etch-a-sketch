@@ -1,23 +1,62 @@
-// Function to generate a random RGB value
-function getRandomColor() {
-  let randomColor = [];
+// Function to get an Array with RGBA values from a backgroundColor
+function getRGBA(color) {
+  // Slice color string to get rgba values within () parenthesis
+  let rgba = color.slice(color.indexOf('(') + 1, color.indexOf(')')).split(',');
 
-  for (i = 0; i < 3; i++) {
-    let num = Math.floor(Math.random() * 256);
-
-    randomColor.push(num);
+  // Add an alpha channel (appends an element to rgba Array)
+  if (rgba.length != 4) {
+    rgba.push('1.0');
   }
 
-  return randomColor.join(", ");
+  // Map through rgba and parse into Int or Float for futher use
+  rgba = rgba.map(function (n, index) {
+    if (index < 3) {
+      return parseInt(n);
+    } else {
+      return parseFloat(n);
+    }
+  });
+
+  return rgba;
+}
+
+// Function to generate a random RGBA color
+function getRandomColor(rgba) {
+  // Map through rgba and assign random RGB values, leave alpha channel alone
+  rgba = rgba.map(function (n, index) {
+    if (index < 3) {
+      return Math.floor(Math.random() * 256);
+    } else {
+      return n;
+    }
+  })
+
+  return rgba;
+}
+
+// Function to darken a square color by 10%
+function darkenColor(rgba) {
+  // Map through rgba and reduce alpha channel (last element in array) by 10%
+  rgba = rgba.map(function (n, index) {
+    if (index < 3) {
+      return n;
+    } else {
+      return Math.max(0, n - 0.1); // Ensure alpha doesn't go below 0
+    }
+  });
+
+  return rgba;
 }
 
 // Function to handle mouseover event
 function handleMouseOver(square) {
-  // Randomize color with each interaction
-  let randomColor = getRandomColor();
+  let color = square.style.backgroundColor;
+  let rgba = getRGBA(color);
+  rgba = getRandomColor(rgba);
+  rgba = darkenColor(rgba);
 
   // Change the background color when hovered
-  square.style.backgroundColor = `rgb(${randomColor})`;
+  square.style.backgroundColor = `rgba(${rgba.join(', ')})`;
 }
 
 // Function to create squares and attach event listeners
@@ -29,6 +68,7 @@ function createSquares(gridSize) {
     // Create a new square element and set attribute class to square
     let square = document.createElement("div");
     square.setAttribute("class", "square");
+    square.style.backgroundColor = "rgba(255, 255, 255, 1)";
     
     // Adjust the squares to fit container dynamically
     let squareWidth = `calc(100% / ${gridSize} - 1px)`
@@ -81,7 +121,7 @@ function createNewGrid() {
   createSquares(gridSize);
 }
 
-createSquares(16)
+createSquares(16);
 
 // Add event listener to button, passing createNewGrid as reference to addEventListener
 let button = document.querySelector("#grid-size-btn")
