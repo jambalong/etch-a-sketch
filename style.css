@@ -1,6 +1,8 @@
 * {
   padding: 0;
   margin: 0;
+  /* Include padding and border in the element's total width and height */
+  box-sizing: border-box;
 }
 
 body {
@@ -10,25 +12,31 @@ body {
 }
 
 #button-container {
+  display: flex;
   margin: auto;
-  justify-content: center;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 #container {
-  justify-content: center;
-  align-items: center;
-  margin: auto;
   display: flex;
+  margin: auto;
   flex-wrap: wrap;
-  max-width: 560px;
-  min-width: 560px;
-  gap: 2px;
+  justify-content: center;
+  border: 2px solid black;
+  /* Set the maximum width of the container */
+  max-width: 800px;
+  /* Set the minimum width of the container */
+  min-width: 800px;
+  padding: 6px;
+  gap: 1px;
 }
 
 .square {
-  padding: 16px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid grey;
+  /* Adjust the width of each square dynamically based on the number of columns */
+  flex-basis: calc(100% / 16 - 1px);
+  /* Maintain square aspect ratio and account for gap */
+  padding-top: calc(100% / 16 - 1px);
 }
 
 #grid-size-btn {

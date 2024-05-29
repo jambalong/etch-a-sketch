@@ -1,5 +1,3 @@
-let container = document.querySelector("#container");
-
 // Function to handle mouseover event
 function handleMouseOver(square) {
   // Change the background color when hovered
@@ -7,14 +5,19 @@ function handleMouseOver(square) {
 }
 
 // Function to create squares and attach event listeners
-function createSquares() {
+function createSquares(gridSize) {
   let container = document.querySelector("#container");
 
-  // Loop to create 256 squares
-  for (i = 0; i < 256; i++) {
+  // Loop to create square divs
+  for (i = 0; i < gridSize ** 2; i++) {
     // Create a new square element and set attribute class to square
     let square = document.createElement("div");
     square.setAttribute("class", "square");
+    
+    // Adjust the squares to fit container dynamically
+    let squareWidth = `calc(100% / ${gridSize} - 1px)`
+    square.style.flexBasis = squareWidth;
+    square.style.paddingTop = squareWidth;
 
     // Add event listener to each square for mouseover event
     square.addEventListener("mouseover", function() {
@@ -26,8 +29,6 @@ function createSquares() {
   }
 }
 
-createSquares();
-
 function deleteGrid() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
@@ -38,12 +39,28 @@ function deleteGrid() {
   }
 }
 
-function createNewGrid() {
-  let gridSize = prompt("Enter the number of squares per side for the new grid (Max: 100)");
+function promptUser() {
+  let userInput;
 
-  deleteGrid();
+  do {
+    userInput = prompt("Enter the number of squares per side for the new grid (Max: 100)");
+
+    if (userInput > 100 || userInput < 1) {
+      alert("Invalid number of squares. Please try again.");
+    }
+  } while (userInput > 100 || userInput < 1);
+
+  return userInput;
 }
 
-let button = document.querySelector("#grid-size-btn")
+function createNewGrid() {
+  let gridSize = promptUser();
 
+  deleteGrid();
+  createSquares(gridSize);
+}
+
+createSquares(16)
+
+let button = document.querySelector("#grid-size-btn")
 button.addEventListener("click", createNewGrid);
