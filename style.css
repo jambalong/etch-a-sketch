@@ -14,7 +14,7 @@ body {
 #button-container {
   display: flex;
   margin: auto;
-  padding-bottom: 5px;
+  padding-bottom: 20px;
 }
 
 #container {
@@ -22,12 +22,13 @@ body {
   margin: auto;
   flex-wrap: wrap;
   justify-content: center;
-  border: 2px solid black;
+  outline: 10px solid grey;
+  box-shadow: 5px 5px 20px black;
   /* Set the maximum width of the container */
   max-width: 800px;
   /* Set the minimum width of the container */
   min-width: 800px;
-  padding: 6px;
+  background-color: black;
   gap: 1px;
 }
 
@@ -41,4 +42,5 @@ body {
 
 #grid-size-btn {
   padding: 5px;
+  color: rgb(0, 0, 0);
 }
