@@ -31,6 +31,7 @@ function createSquares(gridSize) {
 
 // Function to remove #container children (deleting the grid)
 function deleteGrid() {
+  // Delete children element and breaks if container.firstChild is falsy
   while (container.firstChild) {
     container.removeChild(container.firstChild);
 
