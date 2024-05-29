@@ -29,6 +29,7 @@ function createSquares(gridSize) {
   }
 }
 
+// Function to remove #container children (deleting the grid)
 function deleteGrid() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
@@ -39,9 +40,11 @@ function deleteGrid() {
   }
 }
 
+// Function to prompt user for number of squares
 function promptUser() {
   let userInput;
 
+  // Loop till user inputs accepted amount (breaks when input is string)
   do {
     userInput = prompt("Enter the number of squares per side for the new grid (Max: 100)");
 
@@ -53,6 +56,7 @@ function promptUser() {
   return userInput;
 }
 
+// Function to create new grid
 function createNewGrid() {
   let gridSize = promptUser();
 
@@ -62,5 +66,6 @@ function createNewGrid() {
 
 createSquares(16)
 
+// Add event listener to button, passing createNewGrid as reference to addEventListener
 let button = document.querySelector("#grid-size-btn")
 button.addEventListener("click", createNewGrid);
