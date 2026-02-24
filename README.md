@@ -4,7 +4,7 @@ This project is part of The Odin Project: [Etch-A-Sketch](https://www.theodinpro
 
 Users can interact with a grid, change its dimensions, and apply hover effects.
 
-Live Demo: https://jambalong.com/etch-a-sketch
+Live Demo: [https://jambalong.github.io/etch-a-sketch/](https://jambalong.github.io/etch-a-sketch/)
 
 ## Features
 
